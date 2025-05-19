@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <h3 class="gradient-text">Arabic OCR System</h3>
+      <p>A machine learning project for recognizing Arabic text from images using deep learning techniques.</p>
+      <a href="#" target="_blank" rel="noopener">View Details</a>
+    </div>
+    <div class="project-card">
+      <h3 class="gradient-text">Plant Disease Detection</h3>
+      <p>Developed an AI-powered system to detect diseases in plants for early agricultural intervention.</p>
+      <a href="#" target="_blank" rel="noopener">View Details</a>
+    </div>
+    <div class="project-card">
+      <h3 class="gradient-text">Cybersecurity Asset Discovery</h3>
+      <p>Tool for discovering network assets and visualizing network topology for better security monitoring.</p>
+      <a href="#" target="_blank" rel="noopener">View Details</a>
+    </div>
+    <div class="project-card">
+      <h3 class="gradient-text">Personal Blog & Portfolio Website</h3>
+      <p>Built using Django to showcase skills, blog posts, and projects with a responsive and modern design.</p>
+      <a href="#" target="_blank" rel="noopener">View Details</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+  }
+  .project-card {
+    background: rgba(168, 85, 247, 0.15);
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow:
+      0 4px 8px rgba(168, 85, 247, 0.2),
+      0 0 15px rgba(168, 85, 247, 0.1);
+    border: 2px solid transparent;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(60deg, #a855f7, #ec4899, #f97316, #3b82f6, #a855f7);
+    background-size: 400% 400%;
+    filter: blur(35px);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 0;
+    animation: gradientShift 12s linear infinite;
+    border-radius: 16px;
+  }
+  .project-card:hover::before {
+    opacity: 0.3;
+  }
+  .project-card:hover {
+    box-shadow:
+      0 10px 20px rgba(236, 72, 153, 0.6),
+      0 0 40px rgba(236, 72, 153, 0.3);
+    border-color: #ec4899;
+    transform: translateY(-10px) scale(1.05);
+    z-index: 2;
+  }
+  .project-card h3 {
+    margin-bottom: 14px;
+    font-size: 1.6rem;
+    position: relative;
+    z-index: 1;
+  }
+  .project-card p {
+    font-size: 1rem;
+    color: #eee;
+    line-height: 1.5;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+    min-height: 65px;
+  }
+  .project-card a {
+    font-weight: 600;
+    color: #a855f7;
+    position: relative;
+    z-index: 1;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s ease;
+  }
+  .project-card a:hover {
+    border-color: #f97316;
+    text-decoration: none;
+  }
+
+  /* Gradient Animated Text */
+  .gradient-text {
+    background: linear-gradient(270deg, #a855f7, #ec4899, #f97316, #3b82f6, #a855f7);
+    background-size: 1000% 1000%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 8s ease infinite;
+  }
+
+  /* Animation Keyframes */
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  /* Responsive tweaks */
+  @media (max-width: 480px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+    .project-card h3 {
+      font-size: 1.4rem;
+    }
+  }
+</style>
+{% endblock %}

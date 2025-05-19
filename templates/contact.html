@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section id="contact">
+  <h2>Contact</h2>
+  <div class="contact-info">
+    <p>You can reach me at:</p>
+    <p><a href="mailto:syedhunainali27@gmail.com" class="gradient-text">syedhunainali27@gmail.com</a></p>
+    <p>Phone: <span class="gradient-text">+92 3259598474</span></p>
+    <p>LinkedIn: <a href="https://linkedin.com/in/syedhunain" target="_blank" rel="noopener" class="gradient-text">linkedin.com/in/syedhunain</a></p>
+  </div>
+</section>
+
+<style>
+  .contact-info {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    background: rgba(168, 85, 247, 0.15);
+    border-radius: 16px;
+    box-shadow: 0 4px 8px rgba(168, 85, 247, 0.2);
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-info::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(60deg, #a855f7, #ec4899, #f97316, #3b82f6, #a855f7);
+    background-size: 400% 400%;
+    filter: blur(35px);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 0;
+    animation: gradientShift 12s linear infinite;
+  }
+  .contact-info:hover::before {
+    opacity: 0.3;
+  }
+  .contact-info:hover {
+    box-shadow: 0 10px 20px rgba(236, 72, 153, 0.6);
+    border-color: #ec4899;
+    transform: translateY(-5px);
+  }
+  .contact-info p {
+    position: relative;
+    z-index: 1;
+    color: #eee;
+    margin: 10px 0;
+  }
+  .contact-info a, .contact-info span {
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s ease;
+  }
+  .contact-info a:hover {
+    border-color: #f97316;
+  }
+
+  /* Gradient Animated Text */
+  .gradient-text {
+    background: linear-gradient(270deg, #a855f7, #ec4899, #f97316, #3b82f6, #a855f7);
+    background-size: 1000% 1000%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 8s ease infinite;
+  }
+
+  /* Animation Keyframes */
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  /* Responsive tweaks */
+  @media (max-width: 480px) {
+    .contact-info {
+      font-size: 1rem;
+      padding: 15px;
+    }
+  }
+</style>
+{% endblock %}
