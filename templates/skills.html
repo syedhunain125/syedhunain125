@@ -1,6 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="intro-container">
+  <div class="intro-content">
+    <div class="intro-image-card">
+      <img src="{{ url_for('static', filename='images/profile_pic.jpg') }}" alt="Syed Hunain Profile" id="profile-image" onload="console.log('Profile image loaded successfully')" onerror="console.error('Profile image failed to load'); this.src='https://via.placeholder.com/300?text=Image+Not+Found';">
+    </div>
+    <div class="intro-text">
+      <div class="intro-line">Hi</div>
+      <div class="intro-line">I am</div>
+      <div class="intro-line">Syed Hunain</div>
+      <div class="typewriter">Cybersecurity & AI Developer</div>
+    </div>
+  </div>
+</div>
+
 <section id="skills">
   <h2>Skills</h2>
   <div class="skills-list">
@@ -17,84 +31,4 @@
     <div class="skill">Web Scraping</div>
   </div>
 </section>
-
-<style>
-  .skills-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-top: 30px;
-    justify-content: center;
-  }
-  .skill {
-    background: rgba(168, 85, 247, 0.15);
-    padding: 10px 20px;
-    border-radius: 25px;
-    font-weight: 600;
-    font-size: 1rem;
-    color: #eee;
-    box-shadow: 0 4px 8px rgba(168, 85, 247, 0.2);
-    border: 2px solid transparent;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-  }
-  .skill::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(60deg, #a855f7, #ec4899, #f97316, #3b82f6, #a855f7);
-    background-size: 400% 400%;
-    filter: blur(20px);
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    z-index: 0;
-    animation: gradientShift 12s linear infinite;
-  }
-  .skill:hover::before {
-    opacity: 0.3;
-  }
-  .skill:hover {
-    box-shadow: 0 8px 15px rgba(236, 72, 153, 0.6);
-    border-color: #ec4899;
-    transform: translateY(-5px) scale(1.05);
-  }
-  .skill span {
-    position: relative;
-    z-index: 1;
-    background: linear-gradient(270deg, #a855f7, #ec4899, #f97316, #3b82f6, #a855f7);
-    background-size: 1000% 1000%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: gradientShift 8s ease infinite;
-  }
-
-  /* Animation Keyframes */
-  @keyframes gradientShift {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-
-  /* Responsive tweaks */
-  @media (max-width: 480px) {
-    .skills-list {
-      gap: 10px;
-    }
-    .skill {
-      font-size: 0.9rem;
-      padding: 8px 16px;
-    }
-  }
-</style>
 {% endblock %}
