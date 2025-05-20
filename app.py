@@ -18,5 +18,6 @@ def skills():
 def contact():
     return render_template('contact.html')
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# Required for Vercel
+def handler(environ, start_response):
+    return app(environ, start_response)
