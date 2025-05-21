@@ -22,6 +22,7 @@
       color: white;
       overflow-x: hidden;
       scroll-behavior: smooth;
+      position: relative; /* For positioning background elements */
     }
     body {
       display: flex;
@@ -37,7 +38,7 @@
       color: #ec4899;
     }
 
-    /* Vanta Background */
+    /* Vanta Background (Unchanged) */
     #vanta-bg {
       position: fixed;
       top: 0;
@@ -45,6 +46,45 @@
       width: 100%;
       height: 100%;
       z-index: 0;
+    }
+
+    /* Subtle Animated Noise Overlay */
+    .noise-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("https://www.transparenttextures.com/patterns/noise.png");
+      animation: noise 0.2s infinite linear;
+      opacity: 0.05;
+      z-index: 1;
+      pointer-events: none;
+    }
+    @keyframes noise {
+      0% { transform: translate(0, 0); }
+      10% { transform: translate(-5px, -5px); }
+      20% { transform: translate(5px, 5px); }
+      30% { transform: translate(-5px, 5px); }
+      40% { transform: translate(5px, -5px); }
+      50% { transform: translate(-5px, 0); }
+      60% { transform: translate(5px, 0); }
+      70% { transform: translate(0, -5px); }
+      80% { transform: translate(0, 5px); }
+      90% { transform: translate(-5px, 0); }
+      100% { transform: translate(0, 0); }
+    }
+
+    /* Diagonal Gradient Shapes Using SVG */
+    .diagonal-shapes {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      opacity: 0.1;
+      pointer-events: none;
     }
 
     /* Advanced Professional Header */
@@ -61,6 +101,7 @@
       align-items: center;
       z-index: 1000;
       transition: box-shadow 0.3s ease;
+      border-bottom: 2px solid transparent; /* For glowing border */
     }
     header::before {
       content: '';
@@ -77,6 +118,13 @@
     header.scrolled {
       background: rgba(15, 12, 41, 0.9);
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+      border-bottom: 2px solid;
+      border-image: linear-gradient(90deg, #a855f7, #ec4899) 1;
+      animation: borderGlow 1.5s infinite alternate;
+    }
+    @keyframes borderGlow {
+      0% { box-shadow: 0 0 5px #a855f7, 0 0 10px #ec4899; }
+      100% { box-shadow: 0 0 15px #a855f7, 0 0 30px #ec4899; }
     }
     .logo {
       font-size: 1.8rem;
@@ -112,6 +160,15 @@
       height: 2px;
       background: linear-gradient(90deg, #a855f7, #ec4899);
       animation: underline 0.3s ease forwards;
+    }
+    nav a.active::after {
+      height: 3px;
+      box-shadow: 0 0 10px #a855f7, 0 0 20px #ec4899;
+      animation: glow 1.5s infinite alternate;
+    }
+    @keyframes glow {
+      0% { box-shadow: 0 0 5px #a855f7, 0 0 10px #ec4899; }
+      100% { box-shadow: 0 0 15px #a855f7, 0 0 30px #ec4899; }
     }
     nav a:hover {
       transform: translateY(-2px);
@@ -273,9 +330,10 @@
       border-radius: 10px;
       padding: 20px;
       box-shadow: 0 8px 15px rgba(168, 85, 247, 0.3);
-      transition: all 0.3s ease;
+      transition: all 0.3s ease, transform 0.3s ease;
       position: relative;
       overflow: hidden;
+      border: 2px solid transparent;
     }
     .project-card::before {
       content: '';
@@ -292,12 +350,35 @@
       opacity: 1;
     }
     .project-card:hover {
-      transform: translateY(-8px);
+      transform: translateY(-8px) scale(1.05);
       box-shadow: 0 16px 25px rgba(236, 72, 153, 0.5), 0 0 20px rgba(168, 85, 247, 0.5);
+      border: 2px solid;
+      border-image: linear-gradient(90deg, #a855f7, #ec4899) 1;
+      animation: borderGlow 1.5s infinite alternate;
+    }
+    .project-card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .project-card-icon {
+      font-size: 1.5rem;
+      color: #ec4899;
     }
     .project-card h3 {
       color: #ec4899;
-      margin-bottom: 10px;
+      margin: 0;
+      text-shadow: 0 0 5px #ec4899, 0 0 10px #a855f7; /* Neon accent */
+    }
+    .project-card-tag {
+      background: #a855f7;
+      padding: 4px 8px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: white;
+      margin-left: auto;
     }
     .project-card p {
       font-size: 1rem;
@@ -317,6 +398,63 @@
       background: #ec4899;
       transform: scale(1.05);
       text-decoration: none;
+    }
+    /* Enhanced Project Card Image Slideshow */
+    .project-image-wrapper {
+      position: relative;
+      width: 100%;
+      height: 180px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      overflow: hidden;
+      background: transparent;
+      border: 2px solid rgba(168, 85, 247, 0.5);
+      box-shadow: 0 5px 15px rgba(168, 85, 247, 0.3), inset 0 0 8px rgba(236, 72, 153, 0.2);
+      transition: all 0.4s ease;
+    }
+    .slideshow {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+    .slideshow img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* Use contain to support transparency */
+      border-radius: 10px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    .slideshow img.active {
+      opacity: 1;
+    }
+    /* Navigation Dots */
+    .slideshow-dots {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 2;
+    }
+    .slideshow-dot {
+      width: 10px;
+      height: 10px;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .slideshow-dot.active {
+      background: #ec4899;
+    }
+    .project-card:hover .project-image-wrapper {
+      border-color: rgba(236, 72, 153, 0.8);
+      box-shadow: 0 8px 20px rgba(236, 72, 153, 0.6), inset 0 0 12px rgba(168, 85, 247, 0.4);
     }
 
     /* Skills */
@@ -341,16 +479,98 @@
       transform: translateY(-3px);
     }
 
-    /* Contact */
-    .contact-info {
-      font-size: 1.15rem;
-      line-height: 1.6;
+    /* Contact Form Styling */
+    .contact-form-container {
+      background: rgba(168, 85, 247, 0.15);
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 8px 20px rgba(168, 85, 247, 0.3);
+      border: 2px solid #a855f7;
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 1s ease forwards;
     }
-    .contact-info a {
+    .contact-form-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .contact-form-container:hover::before {
+      opacity: 1;
+    }
+    .contact-form-container:hover {
+      box-shadow: 0 12px 25px rgba(236, 72, 153, 0.6), 0 0 20px rgba(168, 85, 247, 0.5);
+      border-color: #ec4899;
+      transform: translateY(-5px);
+    }
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      padding: 12px 15px;
+      border-radius: 25px;
+      border: 2px solid #a855f7;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      font-size: 1rem;
+      outline: none;
+      transition: all 0.3s ease;
+      resize: none;
+    }
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+      color: #ddd;
+      opacity: 0.7;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: #ec4899;
+      box-shadow: 0 0 10px rgba(236, 72, 153, 0.5);
+      background: rgba(255, 255, 255, 0.15);
+    }
+    .contact-form textarea {
+      border-radius: 15px;
+      min-height: 120px;
+    }
+    .contact-form button {
+      padding: 12px 30px;
+      border-radius: 25px;
+      border: none;
+      background: #a855f7;
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      align-self: center;
+    }
+    .contact-form button:hover {
+      background: #ec4899;
+      box-shadow: 0 0 15px rgba(236, 72, 153, 0.6);
+      transform: scale(1.05);
+    }
+    .contact-info-below {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 1rem;
+      color: #ddd;
+    }
+    .contact-info-below a {
       color: #ec4899;
       font-weight: 600;
     }
-    .contact-info a:hover {
+    .contact-info-below a:hover {
       text-decoration: underline;
     }
 
@@ -590,6 +810,21 @@
 </head>
 <body>
   <div id="vanta-bg"></div>
+  <div class="noise-overlay"></div>
+  <svg class="diagonal-shapes" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+    <path d="M0 0 L1000 1000 Z" fill="url(#gradient1)" />
+    <path d="M1000 0 L0 1000 Z" fill="url(#gradient2)" />
+    <defs>
+      <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#a855f7;stop-opacity:0.2" />
+        <stop offset="100%" style="stop-color:#ec4899;stop-opacity:0" />
+      </linearGradient>
+      <linearGradient id="gradient2" x1="100%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:#ec4899;stop-opacity:0.2" />
+        <stop offset="100%" style="stop-color:#a855f7;stop-opacity:0" />
+      </linearGradient>
+    </defs>
+  </svg>
 
   <!-- Header -->
   <header>
@@ -631,23 +866,71 @@
     <h2>Projects</h2>
     <div class="projects-grid">
       <div class="project-card">
-        <h3>Arabic OCR System</h3>
+        <div class="project-image-wrapper">
+          <div class="slideshow">
+            <img src="{{ url_for('static', filename='images/Screenshot (35).png') }}" alt="Arabic OCR System 1">
+            <img src="{{ url_for('static', filename='images/Screenshot (49).png') }}" alt="Arabic OCR System 2">
+            <img src="{{ url_for('static', filename='images/Screenshot (50).png') }}" alt="Arabic OCR System 3">
+          </div>
+          <div class="slideshow-dots"></div>
+        </div>
+        <div class="project-card-header">
+          <i class="fas fa-language project-card-icon"></i>
+          <h3>Arabic OCR System</h3>
+          <span class="project-card-tag">ML</span>
+        </div>
         <p>A machine learning project for recognizing Arabic text from images using deep learning techniques.</p>
         <a href="#" target="_blank" rel="noopener">View Details</a>
       </div>
       <div class="project-card">
-        <h3>Plant Disease Detection</h3>
+        <div class="project-image-wrapper">
+          <div class="slideshow">
+            <img src="{{ url_for('static', filename='images/image-2100x1000.jpg') }}" alt="Plant Disease Detection 1">
+            <img src="{{ url_for('static', filename='images/Screenshot (39).png') }}" alt="Plant Disease Detection 2">
+            <img src="{{ url_for('static', filename='images/Screenshot (40).png') }}" alt="Plant Disease Detection 3">
+          </div>
+          <div class="slideshow-dots"></div>
+        </div>
+        <div class="project-card-header">
+          <i class="fas fa-leaf project-card-icon"></i>
+          <h3>Plant Disease Detection</h3>
+          <span class="project-card-tag">AI</span>
+        </div>
         <p>Developed an AI-powered system to detect diseases in plants for early agricultural intervention.</p>
         <a href="#" target="_blank" rel="noopener">View Details</a>
       </div>
       <div class="project-card">
-        <h3>Cybersecurity Asset Discovery</h3>
+        <div class="project-image-wrapper">
+          <div class="slideshow">
+            <img src="{{ url_for('static', filename='images/Screenshot (41).png') }}" alt="Cybersecurity Asset Discovery 1">
+            <img src="{{ url_for('static', filename='images/Screenshot (44).png') }}" alt="Cybersecurity Asset Discovery 2">
+            <img src="{{ url_for('static', filename='images/Screenshot (45).png') }}" alt="Cybersecurity Asset Discovery 3">
+          </div>
+          <div class="slideshow-dots"></div>
+        </div>
+        <div class="project-card-header">
+          <i class="fas fa-shield-alt project-card-icon"></i>
+          <h3>Cybersecurity Asset Discovery</h3>
+          <span class="project-card-tag">Security</span>
+        </div>
         <p>Tool for discovering network assets and visualizing network topology for better security monitoring.</p>
         <a href="#" target="_blank" rel="noopener">View Details</a>
       </div>
       <div class="project-card">
-        <h3>Personal Blog & Portfolio Website</h3>
-        <p>Built using Django to showcase skills, blog posts, and projects with a responsive and modern design.</p>
+        <div class="project-image-wrapper">
+          <div class="slideshow">
+            <img src="static\images\Screenshot (1).png" alt="AI Medical Chatboat 1">
+            <img src="static\images\Screenshot (2).png" alt="AI Medical Chatboat 2">
+            <img src="static\images\Screenshot (3).png" alt="AI Medical Chatboat">
+          </div>
+          <div class="slideshow-dots"></div>
+        </div>
+        <div class="project-card-header">
+          <i class="fas fa-robot project-card-icon"></i>
+          <h3>AI Medical Chatboat</h3>
+          <span class="project-card-tag">LLM</span>
+        </div>
+        <p>An intelligent chatbot powered by LLMs that analyzes patient history files to deliver personalized medical insights and smart suggestions</p>
         <a href="#" target="_blank" rel="noopener">View Details</a>
       </div>
     </div>
@@ -662,7 +945,7 @@
       <div class="skill">Power BI</div>
       <div class="skill">Cybersecurity</div>
       <div class="skill">Machine Learning</div>
-      <div class="skill">Computer Vision</div>
+      <div class="skill">CBuiltomputer Vision</div>
       <div class="skill">Oracle APEX</div>
       <div class="skill">Java</div>
       <div class="skill">C++</div>
@@ -672,12 +955,21 @@
 
   <section id="contact">
     <h2>Contact</h2>
-    <p class="contact-info">
-      You can reach me at: <br />
-      <a href="mailto:syedhunainali27@gmail.com">syedhunainali27@gmail.com</a> <br />
-      Phone: +92 300 1234567 <br />
+    <div class="contact-form-container">
+      <form class="contact-form" action="#" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <input type="text" name="subject" placeholder="Subject" required>
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+    <div class="contact-info-below">
+      Or reach me directly at: 
+      <a href="mailto:syedhunainali27@gmail.com">syedhunainali27@gmail.com</a> | 
+      Phone: +92 300 1234567 | 
       LinkedIn: <a href="https://linkedin.com/in/syedhunain" target="_blank" rel="noopener">linkedin.com/in/syedhunain</a>
-    </p>
+    </div>
   </section>
   {% endblock %}
 
@@ -757,6 +1049,71 @@
     const backToTop = document.querySelector('.back-to-top');
     window.addEventListener('scroll', () => {
       backToTop.classList.toggle('show', window.scrollY > 300);
+    });
+
+    // Slideshow Functionality
+    document.addEventListener('DOMContentLoaded', () => {
+      const slideShows = document.querySelectorAll('.slideshow');
+      const slideInterval = 3000; // 3 seconds per slide
+
+      slideShows.forEach(slideshow => {
+        const images = slideshow.getElementsByTagName('img');
+        const dotsContainer = slideshow.nextElementSibling;
+        let currentSlide = 0;
+        let slideIntervalId = null;
+
+        // Create navigation dots
+        for (let i = 0; i < images.length; i++) {
+          const dot = document.createElement('div');
+          dot.classList.add('slideshow-dot');
+          dot.addEventListener('click', () => goToSlide(i));
+          dotsContainer.appendChild(dot);
+        }
+        const dots = dotsContainer.getElementsByClassName('slideshow-dot');
+
+        function updateDots() {
+          for (let i = 0; i < dots.length; i++) {
+            dots[i].classList.remove('active');
+          }
+          dots[currentSlide].classList.add('active');
+        }
+
+        function showSlide(index) {
+          for (let i = 0; i < images.length; i++) {
+            images[i].classList.remove('active');
+          }
+          images[index].classList.add('active');
+          updateDots();
+        }
+
+        function goToSlide(index) {
+          currentSlide = (index + images.length) % images.length;
+          showSlide(currentSlide);
+          resetInterval();
+        }
+
+        function nextSlide() {
+          currentSlide = (currentSlide + 1) % images.length;
+          showSlide(currentSlide);
+        }
+
+        function startInterval() {
+          slideIntervalId = setInterval(nextSlide, slideInterval);
+        }
+
+        function resetInterval() {
+          clearInterval(slideIntervalId);
+          startInterval();
+        }
+
+        // Initialize first slide
+        showSlide(currentSlide);
+        startInterval();
+
+        // Pause on hover
+        slideshow.addEventListener('mouseenter', () => clearInterval(slideIntervalId));
+        slideshow.addEventListener('mouseleave', startInterval);
+      });
     });
   </script>
 </body>
