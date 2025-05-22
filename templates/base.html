@@ -6,6 +6,7 @@
   <title>Syed Hunain | Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.net.min.js"></script>
   <style>
@@ -33,7 +34,7 @@
       color: #a855f7;
       text-decoration: none;
       transition: color 0.3s ease;
-    }a
+    }
     a:hover {
       color: #ec4899;
     }
@@ -88,24 +89,22 @@
     }
 
     /* Advanced Professional Header */
-  header
-{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: transparent;
-    padding: 20px 40px;
-    height: 80px;
-    display: flex
-;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 9999999;
-    transition: box-shadow 0.3s ease;
-    backdrop-filter: blur(5px);
-    border-bottom: 2px solid transparent;
-}
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: transparent;
+      padding: 20px 40px;
+      height: 80px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 9999999;
+      transition: box-shadow 0.3s ease;
+      backdrop-filter: blur(5px);
+      border-bottom: 2px solid transparent;
+    }
     header::before {
       content: '';
       position: absolute;
@@ -137,9 +136,20 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       transition: transform 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
     .logo:hover {
       transform: scale(1.05);
+    }
+    .logo i {
+      font-size: 1.5rem;
+      color: #a855f7;
+      transition: color 0.3s ease;
+    }
+    .logo:hover i {
+      color: #ec4899;
     }
     nav {
       display: flex;
@@ -329,16 +339,16 @@
       margin-top: 25px;
     }
     .project-card {
-    background: rgba(168, 85, 247, 0.15);
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 8px 15px rgba(168, 85, 247, 0.3);
-    transition: all 0.3s ease, transform 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    border: 2px solid transparent;
-    backdrop-filter: blur(5px);
-}
+      background: rgba(168, 85, 247, 0.15);
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 8px 15px rgba(168, 85, 247, 0.3);
+      transition: all 0.3s ease, transform 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      border: 2px solid transparent;
+      backdrop-filter: blur(5px);
+    }
     .project-card::before {
       content: '';
       position: absolute;
@@ -368,10 +378,10 @@
     }
     .project-card-icon {
       font-size: 1.5rem;
-      color: #ec4899;
+      color: rgb(221, 210, 215);
     }
     .project-card h3 {
-      color: #ec4899;
+      color: rgb(3, 11, 0);
       margin: 0;
       text-shadow: 0 0 5px #ec4899, 0 0 10px #a855f7; /* Neon accent */
     }
@@ -720,6 +730,9 @@
       .logo {
         font-size: 1.5rem;
       }
+      .logo i {
+        font-size: 1.2rem;
+      }
       nav {
         display: none;
         position: absolute;
@@ -832,7 +845,7 @@
 
   <!-- Header -->
   <header>
-    <div class="logo">Syed Hunain</div>
+    <div class="logo"><i class="fas fa-user"></i> Syed Hunain</div>
     <nav>
       <a href="{{ url_for('home') }}" class="{% if request.path == '/' %}active{% endif %}">About</a>
       <a href="{{ url_for('projects') }}" class="{% if request.path == '/projects' %}active{% endif %}">Projects</a>
@@ -872,9 +885,9 @@
       <div class="project-card">
         <div class="project-image-wrapper">
           <div class="slideshow">
-            <img src="{{ url_for('static', filename='images/Screenshot (35).png') }}" alt="Arabic OCR System 1">
-            <img src="{{ url_for('static', filename='images/Screenshot (49).png') }}" alt="Arabic OCR System 2">
-            <img src="{{ url_for('static', filename='images/Screenshot (50).png') }}" alt="Arabic OCR System 3">
+            <img src="{{ url_for('static', filename='images/ocr1.png') }}" alt="Arabic OCR System 1">
+            <img src="{{ url_for('static', filename='images/ocr2.png') }}" alt="Arabic OCR System 2">
+            <img src="{{ url_for('static', filename='images/ocr3.png') }}" alt="Arabic OCR System 3">
           </div>
           <div class="slideshow-dots"></div>
         </div>
@@ -889,9 +902,9 @@
       <div class="project-card">
         <div class="project-image-wrapper">
           <div class="slideshow">
-            <img src="{{ url_for('static', filename='images/image-2100x1000.jpg') }}" alt="Plant Disease Detection 1">
-            <img src="{{ url_for('static', filename='images/Screenshot (39).png') }}" alt="Plant Disease Detection 2">
-            <img src="{{ url_for('static', filename='images/Screenshot (40).png') }}" alt="Plant Disease Detection 3">
+            <img src="{{ url_for('static', filename='images/pd1.jpg') }}" alt="Plant Disease Detection 1">
+            <img src="{{ url_for('static', filename='images/pd2.png') }}" alt="Plant Disease Detection 2">
+            <img src="{{ url_for('static', filename='images/pd3.png') }}" alt="Plant Disease Detection 3">
           </div>
           <div class="slideshow-dots"></div>
         </div>
@@ -906,9 +919,9 @@
       <div class="project-card">
         <div class="project-image-wrapper">
           <div class="slideshow">
-            <img src="{{ url_for('static', filename='images/Screenshot (41).png') }}" alt="Cybersecurity Asset Discovery 1">
-            <img src="{{ url_for('static', filename='images/Screenshot (44).png') }}" alt="Cybersecurity Asset Discovery 2">
-            <img src="{{ url_for('static', filename='images/Screenshot (45).png') }}" alt="Cybersecurity Asset Discovery 3">
+            <img src="{{ url_for('static', filename='images/Aichattboat.png') }}" alt="Cybersecurity Asset Discovery 1">
+            <img src="{{ url_for('static', filename='images/aichatboat2.png') }}" alt="Cybersecurity Asset Discovery 2">
+            <img src="{{ url_for('static', filename='images/Aichatboat3.png') }}" alt="Cybersecurity Asset Discovery 3">
           </div>
           <div class="slideshow-dots"></div>
         </div>
@@ -923,9 +936,9 @@
       <div class="project-card">
         <div class="project-image-wrapper">
           <div class="slideshow">
-            <img src="static\images\Screenshot (1).png" alt="AI Medical Chatboat 1">
-            <img src="static\images\Screenshot (2).png" alt="AI Medical Chatboat 2">
-            <img src="static\images\Screenshot (3).png" alt="AI Medical Chatboat">
+            <img src="static\images\netc1.png" alt="AI Medical Chatboat 1">
+            <img src="static\images\netc2.png" alt="AI Medical Chatboat 2">
+            <img src="static\images\netc3.png" alt="AI Medical Chatboat">
           </div>
           <div class="slideshow-dots"></div>
         </div>
