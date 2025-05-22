@@ -6,7 +6,9 @@
   <title>Syed Hunain | Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+  <!-- Favicon using logo.png -->
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo.png') }}">
+  <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.net.min.js"></script>
   <style>
@@ -23,12 +25,12 @@
       color: white;
       overflow-x: hidden;
       scroll-behavior: smooth;
-      position: relative; /* For positioning background elements */
+      position: relative;
     }
     body {
       display: flex;
       flex-direction: column;
-      min-height: 100vh; /* Ensure body takes full height */
+      min-height: 100vh;
     }
     a {
       color: #a855f7;
@@ -39,7 +41,7 @@
       color: #ec4899;
     }
 
-    /* Vanta Background (Unchanged) */
+    /* Vanta Background */
     #vanta-bg {
       position: fixed;
       top: 0;
@@ -49,7 +51,7 @@
       z-index: 0;
     }
 
-    /* Subtle Animated Noise Overlay */
+    /* Noise Overlay */
     .noise-overlay {
       position: fixed;
       top: 0;
@@ -76,7 +78,7 @@
       100% { transform: translate(0, 0); }
     }
 
-    /* Diagonal Gradient Shapes Using SVG */
+    /* Diagonal Shapes */
     .diagonal-shapes {
       position: fixed;
       top: 0;
@@ -88,7 +90,7 @@
       pointer-events: none;
     }
 
-    /* Advanced Professional Header */
+    /* Header */
     header {
       position: fixed;
       top: 0;
@@ -143,13 +145,13 @@
     .logo:hover {
       transform: scale(1.05);
     }
-    .logo i {
-      font-size: 1.5rem;
-      color: #a855f7;
-      transition: color 0.3s ease;
+    .logo img {
+      width: 40px;
+      height: auto;
+      transition: transform 0.3s ease;
     }
-    .logo:hover i {
-      color: #ec4899;
+    .logo:hover img {
+      transform: scale(1.05);
     }
     nav {
       display: flex;
@@ -383,7 +385,7 @@
     .project-card h3 {
       color: rgb(3, 11, 0);
       margin: 0;
-      text-shadow: 0 0 5px #ec4899, 0 0 10px #a855f7; /* Neon accent */
+      text-shadow: 0 0 5px #ec4899, 0 0 10px #a855f7;
     }
     .project-card-tag {
       background: #a855f7;
@@ -413,7 +415,6 @@
       transform: scale(1.05);
       text-decoration: none;
     }
-    /* Enhanced Project Card Image Slideshow */
     .project-image-wrapper {
       position: relative;
       width: 100%;
@@ -434,7 +435,7 @@
     .slideshow img {
       width: 100%;
       height: 100%;
-      object-fit: contain; /* Use contain to support transparency */
+      object-fit: contain;
       border-radius: 10px;
       position: absolute;
       top: 0;
@@ -445,7 +446,6 @@
     .slideshow img.active {
       opacity: 1;
     }
-    /* Navigation Dots */
     .slideshow-dots {
       position: absolute;
       bottom: 10px;
@@ -493,7 +493,7 @@
       transform: translateY(-3px);
     }
 
-    /* Contact Form Styling */
+    /* Contact Form */
     .contact-form-container {
       background: rgba(168, 85, 247, 0.15);
       border-radius: 15px;
@@ -590,7 +590,7 @@
 
     /* Footer */
     footer {
-      flex-shrink: 0; /* Prevent footer from shrinking */
+      flex-shrink: 0;
       background: rgba(15, 12, 41, 0.95);
       padding: 40px 20px;
       text-align: center;
@@ -730,8 +730,8 @@
       .logo {
         font-size: 1.5rem;
       }
-      .logo i {
-        font-size: 1.2rem;
+      .logo img {
+        width: 35px;
       }
       nav {
         display: none;
@@ -822,6 +822,9 @@
         width: 100%;
         max-width: 250px;
       }
+      .logo img {
+        width: 30px;
+      }
     }
   </style>
 </head>
@@ -845,7 +848,7 @@
 
   <!-- Header -->
   <header>
-    <div class="logo"><i class="fas fa-user"></i> Syed Hunain</div>
+    <div class="logo"><img src="{{ url_for('static', filename='images/logo.png') }}" alt="Syed Hunain Logo"> Syed Hunain</div>
     <nav>
       <a href="{{ url_for('home') }}" class="{% if request.path == '/' %}active{% endif %}">About</a>
       <a href="{{ url_for('projects') }}" class="{% if request.path == '/projects' %}active{% endif %}">Projects</a>
@@ -861,7 +864,7 @@
   <div class="intro-container">
     <div class="intro-content">
       <div class="intro-image-card">
-        <img src="{{ url_for('static', filename='images/profile_pic.jpg') }}" alt="Syed Hunain Profile" id="profile-image" onload="console.log('Profile image loaded successfully')" onerror="console.error('Profile image failed to load'); this.src='https://via.placeholder.com/300?text=Image+Not+Found';">
+        <img src="{{ url_for('static', filename='images/pff.jpg') }}" alt="Syed Hunain Profile" id="profile-image" onload="console.log('Profile image loaded successfully')" onerror="console.error('Profile image failed to load'); this.src='https://via.placeholder.com/300?text=Image+Not+Found';">
       </div>
       <div class="intro-text">
         <div class="intro-line">Hi</div>
@@ -936,9 +939,9 @@
       <div class="project-card">
         <div class="project-image-wrapper">
           <div class="slideshow">
-            <img src="static\images\netc1.png" alt="AI Medical Chatboat 1">
-            <img src="static\images\netc2.png" alt="AI Medical Chatboat 2">
-            <img src="static\images\netc3.png" alt="AI Medical Chatboat">
+            <img src="{{ url_for('static', filename='images/netc1.png') }}" alt="AI Medical Chatboat 1">
+            <img src="{{ url_for('static', filename='images/netc2.png') }}" alt="AI Medical Chatboat 2">
+            <img src="{{ url_for('static', filename='images/netc3.png') }}" alt="AI Medical Chatboat">
           </div>
           <div class="slideshow-dots"></div>
         </div>
@@ -962,7 +965,7 @@
       <div class="skill">Power BI</div>
       <div class="skill">Cybersecurity</div>
       <div class="skill">Machine Learning</div>
-      <div class="skill">CBuiltomputer Vision</div>
+      <div class="skill">Computer Vision</div>
       <div class="skill">Oracle APEX</div>
       <div class="skill">Java</div>
       <div class="skill">C++</div>
@@ -1005,7 +1008,7 @@
       </div>
     </div>
     <div class="footer-copyright">
-      © 2025 Syed Hunain. All rights reserved.
+      © 2025 Syed Hunain. All rights reserved. Last updated: Friday, May 23, 2025, 02:28 AM PKT.
     </div>
   </footer>
 
@@ -1071,7 +1074,7 @@
     // Slideshow Functionality
     document.addEventListener('DOMContentLoaded', () => {
       const slideShows = document.querySelectorAll('.slideshow');
-      const slideInterval = 3000; // 3 seconds per slide
+      const slideInterval = 3000;
 
       slideShows.forEach(slideshow => {
         const images = slideshow.getElementsByTagName('img');
@@ -1079,7 +1082,6 @@
         let currentSlide = 0;
         let slideIntervalId = null;
 
-        // Create navigation dots
         for (let i = 0; i < images.length; i++) {
           const dot = document.createElement('div');
           dot.classList.add('slideshow-dot');
@@ -1123,11 +1125,9 @@
           startInterval();
         }
 
-        // Initialize first slide
         showSlide(currentSlide);
         startInterval();
 
-        // Pause on hover
         slideshow.addEventListener('mouseenter', () => clearInterval(slideIntervalId));
         slideshow.addEventListener('mouseleave', startInterval);
       });
