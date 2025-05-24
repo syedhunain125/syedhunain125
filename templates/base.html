@@ -164,6 +164,7 @@
       position: relative;
       padding: 5px 0;
       transition: color 0.3s ease, transform 0.3s ease;
+      touch-action: manipulation; /* Improve touch responsiveness */
     }
     nav a.active::after,
     nav a:hover::after {
@@ -197,6 +198,7 @@
       background: rgba(255, 255, 255, 0.1);
       cursor: pointer;
       transition: background 0.3s ease, color 0.3s ease;
+      touch-action: manipulation; /* Improve touch responsiveness */
     }
     .language-selector:hover {
       background: rgba(255, 255, 255, 0.2);
@@ -212,6 +214,7 @@
       cursor: pointer;
       color: #8a4af3;
       transition: color 0.3s ease, transform 0.3s ease;
+      touch-action: manipulation; /* Improve touch responsiveness */
     }
     .hamburger:hover {
       color: #00d4ff;
@@ -322,7 +325,7 @@
 
     /* Skills Section */
     #skills {
-      text-align: left; /* Align skills section to match headings */
+      text-align: left;
     }
     #skills p {
       max-width: 1200px;
@@ -333,7 +336,7 @@
       vertical-align: top;
     }
     .skills-grid {
-      display: grid; /* Changed to grid for better alignment control */
+      display: grid;
       grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
       gap: 20px;
       max-width: 1200px;
@@ -346,10 +349,11 @@
       border-radius: 15px;
       display: flex;
       flex-direction: column;
-      align-items: flex-start; /* Align items to the left */
-      text-align: left; /* Ensure text is left-aligned */
+      align-items: flex-start;
+      text-align: left;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
+      touch-action: manipulation; /* Improve touch responsiveness */
     }
     .skill-item:hover {
       transform: translateY(-5px);
@@ -367,12 +371,12 @@
     }
     .skill-item span {
       font-size: 0.9em;
-      background: linear-gradient(90deg, #8a4af3, #00d4ff); /* Match heading gradient */
+      background: linear-gradient(90deg, #8a4af3, #00d4ff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
     .fa-python { color: #4B8BBE; }
-    .fa-code { color:rgb(10, 224, 142); } /* Replacing Django icon with a generic code icon */
+    .fa-code { color: rgb(10, 224, 142); }
     .fa-flask { color: #000; }
     .fa-chart-pie { color: #F2C811; }
     .fa-shield-alt { color: #D4A017; }
@@ -403,6 +407,7 @@
       overflow: hidden;
       border: 2px solid transparent;
       backdrop-filter: blur(5px);
+      touch-action: manipulation; /* Improve touch responsiveness */
     }
     .project-card::before {
       content: '';
@@ -460,6 +465,7 @@
       color: #fff;
       font-weight: 600;
       transition: background 0.3s ease, transform 0.3s ease;
+      touch-action: manipulation; /* Improve touch responsiveness */
     }
     .project-card a:hover {
       background: #00d4ff;
@@ -513,6 +519,7 @@
       border-radius: 50%;
       cursor: pointer;
       transition: background 0.3s ease;
+      touch-action: manipulation; /* Improve touch responsiveness */
     }
     .slideshow-dot.active {
       background: #00d4ff;
@@ -570,6 +577,7 @@
       outline: none;
       transition: all 0.3s ease;
       resize: none;
+      width: 100%; /* Ensure full width on mobile */
     }
     .contact-form input::placeholder,
     .contact-form textarea::placeholder {
@@ -597,6 +605,7 @@
       cursor: pointer;
       transition: all 0.3s ease;
       align-self: center;
+      touch-action: manipulation; /* Improve touch responsiveness */
     }
     .contact-form button:hover {
       background: #00d4ff;
@@ -650,6 +659,7 @@
       font-size: 1.5rem;
       color: #8a4af3;
       transition: color 0.3s ease, transform 0.3s ease;
+      touch-action: manipulation; /* Improve touch responsiveness */
     }
     .footer-socials a:hover {
       color: #00d4ff;
@@ -669,6 +679,8 @@
       color: #e6e6e6;
       outline: none;
       font-size: 1rem;
+      width: 100%; /* Ensure full width on mobile */
+      max-width: 300px;
     }
     .footer-newsletter button {
       padding: 10px 20px;
@@ -679,6 +691,9 @@
       font-weight: 600;
       cursor: pointer;
       transition: background 0.3s ease, transform 0.3s ease;
+      touch-action: manipulation; /* Improve touch responsiveness */
+      width: 100%;
+      max-width: 300px;
     }
     .footer-newsletter button:hover {
       background: #00d4ff;
@@ -702,6 +717,7 @@
       visibility: hidden;
       transition: all 0.3s ease;
       z-index: 1000;
+      touch-action: manipulation; /* Improve touch responsiveness */
     }
     .back-to-top.show {
       opacity: 1;
@@ -738,136 +754,13 @@
       100% { background-position: 100% 100%; }
     }
 
-    /* Responsive Design */
-    @media (max-width: 1024px) {
-      .intro-line {
-        font-size: 4.5vw;
-      }
-      .intro-image-card img {
-        width: 250px;
-        height: 250px;
-      }
-      .projects-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      }
-    }
-    @media (max-width: 768px) {
-      header {
-        padding: 15px 20px;
-        height: 70px;
-      }
-      .logo {
-        font-size: 1.5rem;
-      }
-      .logo img {
-        width: 35px;
-      }
-      nav {
-        display: none;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        background: rgba(15, 15, 26, 0.95);
-        flex-direction: column;
-        padding: 20px 0;
-      }
-      nav.active {
-        display: flex;
-      }
-      nav a {
-        margin: 12px 0;
-        font-size: 1.2rem;
-      }
-      .hamburger {
-        display: block;
-      }
-      .language-selector {
-        margin-top: 10px;
-      }
-      .intro-container {
-        padding: 90px 15px 15px;
-      }
-      .intro-content {
-        flex-direction: column;
-        text-align: center;
-        gap: 30px;
-      }
-      .intro-text {
-        text-align: center;
-      }
-      .intro-line {
-        font-size: 8vw;
-      }
-      .intro-image-card img {
-        width: 240px;
-        height: 240px;
-      }
-      .typewriter {
-        font-size: 1.2rem;
-      }
-      section h2 {
-        font-size: 2.2em;
-      }
-      section p {
-        font-size: 1.1em;
-      }
-      .footer-content {
-        flex-direction: column;
-        gap: 30px;
-      }
-      #skills {
-        text-align: center; /* Revert to center for smaller screens */
-      }
-      .skill-item {
-        align-items: center; /* Center items on smaller screens */
-        text-align: center;
-      }
-    }
-    @media (max-width: 480px) {
-      .intro-line {
-        font-size: 10vw;
-      }
-      .intro-image-card img {
-        width: 200px;
-        height: 200px;
-      }
-      .typewriter {
-        font-size: 1rem;
-      }
-      section h2 {
-        font-size: 1.8em;
-      }
-      section p {
-        font-size: 1em;
-      }
-      .project-card {
-        padding: 15px;
-      }
-      .project-card h3 {
-        font-size: 1.2rem;
-      }
-      .project-card p {
-        font-size: 0.9em;
-      }
-      .footer-newsletter input {
-        width: 100%;
-        max-width: 250px;
-      }
-      .footer-newsletter button {
-        width: 100%;
-        max-width: 250px;
-      }
-      .logo img {
-        width: 30px;
-      }
-    }
-
     /* Intro Buttons */
     .intro-buttons {
       display: flex;
       gap: 15px;
       margin-top: 20px;
+      flex-wrap: wrap; /* Ensure buttons wrap on smaller screens */
+      justify-content: center;
     }
     .intro-buttons a {
       padding: 10px 20px;
@@ -875,6 +768,8 @@
       font-weight: 600;
       text-align: center;
       text-decoration: none;
+      touch-action: manipulation; /* Improve touch responsiveness */
+      min-width: 150px; /* Ensure buttons are touch-friendly */
     }
     .intro-buttons .resume-btn {
       background: #8a4af3;
@@ -907,6 +802,7 @@
       text-align: center;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
+      touch-action: manipulation; /* Improve touch responsiveness */
     }
     .service-card:hover {
       transform: translateY(-5px);
@@ -943,12 +839,15 @@
       justify-content: center;
       gap: 15px;
       margin-top: 20px;
+      flex-wrap: wrap; /* Ensure buttons wrap on smaller screens */
     }
     .connect-buttons a {
       padding: 10px 20px;
       border-radius: 25px;
       font-weight: 600;
       text-decoration: none;
+      touch-action: manipulation; /* Improve touch responsiveness */
+      min-width: 150px; /* Ensure buttons are touch-friendly */
     }
     .connect-buttons .email-app {
       background: #8a4af3;
@@ -969,6 +868,383 @@
     .connect-info {
       margin-top: 20px;
       font-size: 0.9em;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .intro-line {
+        font-size: 4.5vw;
+      }
+      .intro-image-card img {
+        width: 250px;
+        height: 250px;
+      }
+      .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      }
+      .services-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 15px 20px;
+        height: 70px;
+      }
+      .logo {
+        font-size: 1.5rem;
+      }
+      .logo img {
+        width: 35px;
+      }
+      nav {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: rgba(15, 15, 26, 0.95);
+        flex-direction: column;
+        padding: 20px 0;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+      }
+      nav.active {
+        display: flex;
+      }
+      nav a {
+        margin: 12px 0;
+        font-size: 1.2rem;
+        padding: 10px 0; /* Increase touch target size */
+      }
+      .hamburger {
+        display: block;
+      }
+      .language-selector {
+        margin-top: 10px;
+        font-size: 0.9rem;
+        padding: 6px 15px;
+      }
+      .intro-container {
+        padding: 90px 15px 15px;
+      }
+      .intro-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+      }
+      .intro-text {
+        text-align: center;
+      }
+      .intro-line {
+        font-size: 8vw;
+      }
+      .intro-image-card img {
+        width: 240px;
+        height: 240px;
+      }
+      .typewriter {
+        font-size: 1.2rem;
+      }
+      section h2 {
+        font-size: 2.2em;
+        text-align: center; /* Center headings on mobile */
+      }
+      section p {
+        font-size: 1.1em;
+        text-align: center; /* Center text on mobile */
+      }
+      .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 15px;
+      }
+      .skill-item {
+        padding: 15px;
+        align-items: center;
+        text-align: center;
+      }
+      .skill-item i {
+        font-size: 2em;
+      }
+      .skill-item span {
+        font-size: 0.8em;
+      }
+      .projects-grid {
+        grid-template-columns: 1fr; /* Single column on mobile */
+        gap: 15px;
+      }
+      .project-card {
+        padding: 15px;
+      }
+      .project-image-wrapper {
+        height: 150px; /* Reduce image height on mobile */
+      }
+      .project-card h3 {
+        font-size: 1.2em;
+      }
+      .project-card p {
+        font-size: 0.9em;
+      }
+      .project-card a {
+        padding: 10px 20px;
+        font-size: 0.9em;
+      }
+      .services-grid {
+        grid-template-columns: 1fr; /* Single column on mobile */
+        gap: 15px;
+      }
+      .service-card {
+        padding: 15px;
+      }
+      .service-card i {
+        font-size: 1.8em;
+      }
+      .service-card h3 {
+        font-size: 1.2em;
+      }
+      .service-card p {
+        font-size: 0.9em;
+      }
+      .contact-form-container {
+        padding: 20px;
+      }
+      .contact-form input,
+      .contact-form textarea {
+        font-size: 0.9em;
+        padding: 10px 12px;
+      }
+      .contact-form button {
+        padding: 10px 25px;
+        font-size: 0.9em;
+      }
+      .contact-info-below {
+        font-size: 0.9em;
+        line-height: 1.5; /* Improve readability */
+      }
+      .footer-content {
+        flex-direction: column;
+        gap: 20px;
+      }
+      .footer-logo {
+        font-size: 1.3rem;
+      }
+      .footer-socials a {
+        font-size: 1.3rem;
+        margin: 0 8px;
+      }
+      .footer-newsletter {
+        gap: 8px;
+      }
+      .footer-copyright {
+        font-size: 0.8rem;
+        line-height: 1.5; /* Improve readability */
+      }
+      .back-to-top {
+        padding: 8px 12px;
+        bottom: 15px;
+        right: 15px;
+      }
+      #skills {
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding: 10px 15px;
+        height: 60px;
+      }
+      .logo {
+        font-size: 1.3rem;
+      }
+      .logo img {
+        width: 30px;
+      }
+      .hamburger {
+        font-size: 1.5rem;
+      }
+      nav {
+        top: 60px;
+        padding: 15px 0;
+      }
+      nav a {
+        font-size: 1rem;
+        margin: 10px 0;
+      }
+      .language-selector {
+        font-size: 0.8rem;
+        padding: 5px 12px;
+      }
+      .intro-line {
+        font-size: 10vw;
+      }
+      .intro-image-card img {
+        width: 200px;
+        height: 200px;
+      }
+      .typewriter {
+        font-size: 1rem;
+      }
+      .intro-buttons a {
+        padding: 8px 16px;
+        font-size: 0.9em;
+        min-width: 120px; /* Adjust for smaller screens */
+      }
+      section {
+        margin: 40px auto;
+        padding: 0 15px 30px;
+      }
+      section h2 {
+        font-size: 1.8em;
+      }
+      section p {
+        font-size: 1em;
+      }
+      .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+        gap: 10px;
+      }
+      .skill-item {
+        padding: 12px;
+      }
+      .skill-item i {
+        font-size: 1.8em;
+      }
+      .skill-item span {
+        font-size: 0.7em;
+      }
+      .project-card {
+        padding: 12px;
+      }
+      .project-image-wrapper {
+        height: 130px;
+      }
+      .project-card h3 {
+        font-size: 1.1em;
+      }
+      .project-card p {
+        font-size: 0.8em;
+      }
+      .project-card a {
+        padding: 8px 18px;
+        font-size: 0.8em;
+      }
+      .service-card {
+        padding: 12px;
+      }
+      .service-card i {
+        font-size: 1.5em;
+      }
+      .service-card h3 {
+        font-size: 1.1em;
+      }
+      .service-card p {
+        font-size: 0.8em;
+      }
+      .connect-section {
+        padding: 30px 15px;
+      }
+      .connect-buttons a {
+        padding: 8px 16px;
+        font-size: 0.9em;
+        min-width: 120px;
+      }
+      .connect-info {
+        font-size: 0.8em;
+      }
+      .contact-form-container {
+        padding: 15px;
+      }
+      .contact-form input,
+      .contact-form textarea {
+        font-size: 0.8em;
+        padding: 8px 10px;
+      }
+      .contact-form textarea {
+        min-height: 100px;
+      }
+      .contact-form button {
+        padding: 8px 20px;
+        font-size: 0.8em;
+      }
+      .contact-info-below {
+        font-size: 0.8em;
+      }
+      .footer-logo {
+        font-size: 1.2rem;
+      }
+      .footer-socials a {
+        font-size: 1.2rem;
+        margin: 0 6px;
+      }
+      .footer-newsletter input,
+      .footer-newsletter button {
+        padding: 8px;
+        font-size: 0.9em;
+        max-width: 250px;
+      }
+      .footer-copyright {
+        font-size: 0.7rem;
+      }
+      .back-to-top {
+        padding: 6px 10px;
+        bottom: 10px;
+        right: 10px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .intro-line {
+        font-size: 12vw;
+      }
+      .intro-image-card img {
+        width: 180px;
+        height: 180px;
+      }
+      .typewriter {
+        font-size: 0.9rem;
+      }
+      .intro-buttons a {
+        padding: 6px 14px;
+        font-size: 0.8em;
+        min-width: 100px;
+      }
+      section h2 {
+        font-size: 1.6em;
+      }
+      section p {
+        font-size: 0.9em;
+      }
+      .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+      }
+      .skill-item {
+        padding: 10px;
+      }
+      .skill-item i {
+        font-size: 1.5em;
+      }
+      .skill-item span {
+        font-size: 0.6em;
+      }
+      .project-image-wrapper {
+        height: 120px;
+      }
+      .project-card h3 {
+        font-size: 1em;
+      }
+      .project-card p {
+        font-size: 0.7em;
+      }
+      .project-card a {
+        padding: 6px 16px;
+        font-size: 0.7em;
+      }
+      .connect-buttons a {
+        padding: 6px 14px;
+        font-size: 0.8em;
+        min-width: 100px;
+      }
     }
   </style>
 </head>
@@ -1169,7 +1445,7 @@
     <p>I offer a wide range of services to help businesses and individuals establish a strong digital presence. Here's how I can help you succeed in the digital world.</p>
     <div class="services-grid">
       <div class="service-card">
-        <i class="fas fa-code"></i> <!-- Replaced fa-django with fa-code -->
+        <i class="fas fa-code"></i>
         <h3>Django Development</h3>
         <p>Building robust and scalable web applications using the Django framework with a focus on security and performance.</p>
       </div>
@@ -1259,7 +1535,7 @@
       </div>
     </div>
     <div class="footer-copyright">
-      © 2025 Syed Hunain. All rights reserved. Last updated: Saturday, May 24, 2025, 05:13 PM PKT.
+      © 2025 Syed Hunain. All rights reserved. Last updated: Saturday, May 24, 2025, 05:53 PM PKT.
     </div>
   </footer>
 
@@ -1284,6 +1560,16 @@
       hamburger.querySelector('i').classList.toggle('fa-times');
     });
 
+    // Close Mobile Menu on Link Click
+    const navLinks = document.querySelectorAll('nav a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('active');
+        hamburger.querySelector('i').classList.add('fa-bars');
+        hamburger.querySelector('i').classList.remove('fa-times');
+      });
+    });
+
     // Set Active Nav Link
     document.addEventListener('DOMContentLoaded', () => {
       const navLinks = document.querySelectorAll('nav a');
@@ -1304,7 +1590,7 @@
       minHeight: 200.00,
       minWidth: 200.00,
       scale: 1.00,
-      scaleMobile: 1.00,
+      scaleMobile: 1.50, // Increased scale for better visibility on mobile
       color: 0x8a4af3,
       backgroundColor: 0x0f0c29,
       points: 10.00,
@@ -1381,8 +1667,37 @@
 
         slideshow.addEventListener('mouseenter', () => clearInterval(slideIntervalId));
         slideshow.addEventListener('mouseleave', startInterval);
+
+        // Touch support for slideshow
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        slideshow.addEventListener('touchstart', (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+          clearInterval(slideIntervalId);
+        });
+
+        slideshow.addEventListener('touchend', (e) => {
+          touchEndX = e.changedTouches[0].screenX;
+          if (touchStartX - touchEndX > 50) {
+            // Swipe left
+            currentSlide = (currentSlide + 1) % images.length;
+          } else if (touchEndX - touchStartX > 50) {
+            // Swipe right
+            currentSlide = (currentSlide - 1 + images.length) % images.length;
+          }
+          showSlide(currentSlide);
+          resetInterval();
+        });
       });
     });
+
+    // Prevent pinch-to-zoom on mobile (optional, improves UX for some elements)
+    document.addEventListener('touchmove', (e) => {
+      if (e.scale !== 1) {
+        e.preventDefault();
+      }
+    }, { passive: false });
   </script>
 </body>
 </html>
